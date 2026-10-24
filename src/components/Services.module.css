@@ -1,0 +1,122 @@
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-line);
+}
+
+.card h3 {
+  font-size: 22px;
+  margin-top: 6px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--mute);
+  font-size: 15px;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Featured card fills a 2x2 block; the rest flow around it */
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  padding: 32px;
+  background: linear-gradient(160deg, var(--accent-soft), #fff 60%);
+}
+
+.featured h3 {
+  font-size: 30px;
+}
+
+.featured p {
+  font-size: 17px;
+  max-width: 46ch;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.bullets li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bullets svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.pill {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--amber-soft);
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 960px) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featured {
+    grid-row: span 1;
+  }
+  .card:nth-child(6) {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+  .featured,
+  .card:nth-child(6) {
+    grid-column: span 1;
+  }
+  .featured {
+    padding: 24px;
+  }
+  .featured h3 {
+    font-size: 26px;
+  }
+}

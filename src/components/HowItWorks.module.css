@@ -1,0 +1,91 @@
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.step {
+  position: relative;
+}
+
+/* Connector runs from this node to the next one */
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 27px;
+  left: 64px;
+  right: -24px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-line));
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font: 600 18px/1 var(--sans);
+  box-shadow: 0 0 0 6px var(--accent-soft);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.step:hover .node {
+  background: var(--accent);
+  color: #fff;
+}
+
+.content {
+  margin-top: 22px;
+  padding: 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.content h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.content p {
+  margin: 0;
+  color: var(--mute);
+  font-size: 15px;
+}
+
+@media (max-width: 767px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+  }
+
+  .step:not(:last-child)::after {
+    top: 56px;
+    bottom: -20px;
+    left: 27px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--accent), var(--accent-line));
+  }
+
+  .content {
+    margin-top: 0;
+  }
+}
